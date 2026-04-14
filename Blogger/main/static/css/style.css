@@ -1,0 +1,99 @@
+:root {
+    --primary-color: rgb(255, 248, 217);
+    --secondary-color : rgb(70, 61, 61);
+    --personality-prime-color: rgb(236, 114, 0);
+    --personality-second-color: rgb(177, 41, 0);
+}
+body {
+    background-color:var(--primary-color);
+}
+.nav-style {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+}
+.navbar-brand:hover {
+    color: var(--personality-second-color);
+}
+.hero{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 4rem 4rem;
+    border-radius: 5%;
+    border-bottom: solid 0.25rem var(--personality-second-color);
+    border-top: solid 0.25rem var(--personality-second-color);
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.hero-content {
+    width: 100%;
+    max-width: 700px;
+}
+h1,
+h2 {
+    color: var(--primary-color);
+}
+.form-control {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+.form-control:focus{
+    border: 1px solid var(--personality-prime-color);
+    box-shadow: 0 0 0.5rem 0.2rem var(--personality-prime-color);
+    background-color: var(--primary-color);
+}
+.submit-btn {
+    background-color: var(--personality-prime-color);
+    border: none;
+    color: var(--primary-color);
+    align-self: center;
+}
+.submit-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+
+
+.posts {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 4rem 4rem;
+    background-color: var(--secondary-color);
+    border-radius: 5%;
+    border-bottom: solid 0.25rem var(--personality-second-color);
+    border-top: solid 0.25rem var(--personality-second-color);
+
+}
+.box {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 5%;
+    padding: 0.5rem 0.5rem;
+    border-left: solid 0.25rem var(--personality-prime-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.box:hover {
+    transform: scale(1.25);
+    box-shadow: 0 0 0.7rem var(--personality-prime-color);
+}
+
+.post-title {
+    color: var(--secondary-color);
+    font-size: clamp(1rem, 2vw, 1.3rem);
+}
+.post-content {
+    color: var(--secondary-color);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+}
+.post-date {
+    color: var(--secondary-color);
+    font-size: clamp(0.45rem, 1vw, 0.5rem);
+}

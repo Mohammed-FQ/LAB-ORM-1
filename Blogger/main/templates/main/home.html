@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% block title %}Home{% endblock%}
+
+{% block content%}
+    <div class="container-lg">
+        <div class="posts">
+            <div class="section-head">
+                <h2>Recent posts</h2>
+            </div>
+            <div class="row g-4 row-cols-3 row-cols-lg-3">
+                {% for post in posts %}
+                <div class="col">
+                    <div class="box h-100">
+                        <p class="post-title">{{ post.title }}</p>
+                        <p class="post-content">{{ post.content }}</p>
+                        <p class="post-date">{{ post.published_at }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="hero">
+            <div class="hero-content">
+                <div class="col-12">
+                    <h1>Share Your Thoughts</h1>
+                </div>
+                <div class="col-12">
+                    <form class="post-form d-flex flex-column gap-3" action="{% url 'main:home_view' %}" method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Post Title" name="title" class="form-control">
+                        <textarea placeholder="Talk to us" name="content" class="form-control" rows="4"></textarea>
+                        <input type="submit" value="Send post" class="btn btn-primary submit-btn" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+{% endblock%}
