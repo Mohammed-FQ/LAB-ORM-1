@@ -7,7 +7,7 @@
             <div class="section-head">
                 <h2>Recent posts</h2>
             </div>
-            <div class="row g-4 row-cols-3 row-cols-lg-3">
+            <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
                 {% for post in posts %}
                 <div class="col">
                     <div class="box h-100">
@@ -27,8 +27,20 @@
                 <div class="col-12">
                     <form class="post-form d-flex flex-column gap-3" action="{% url 'main:home_view' %}" method="post">
                         {% csrf_token %}
-                        <input type="text" placeholder="Post Title" name="title" class="form-control">
-                        <textarea placeholder="Talk to us" name="content" class="form-control" rows="4"></textarea>
+                        <input type="text" placeholder="Post Title" name="title" class="form-control" required>
+                        {% if safe_title == False %}
+                            <div class="alert alert-danger py-2 mb-0">
+                                Post has profanity (title field). Please choose different wording.
+                            </div>
+                        {% endif %}
+
+                        <textarea placeholder="Talk to us" name="content" class="form-control" rows="4" required></textarea>
+                        {% if safe_content == False %}
+                            <div class="alert alert-danger py-2 mb-0">
+                                Post has profanity (content field). Please choose different wording.
+                            </div>
+                        {% endif %}
+
                         <input type="submit" value="Send post" class="btn btn-primary submit-btn" />
                     </form>
                 </div>
