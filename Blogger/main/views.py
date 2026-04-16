@@ -14,7 +14,10 @@ def home_view(request:HttpRequest):
         if is_bad_word(content):
             print("not safe 2")
             return render(request, 'main/home.html',{"posts": posts, "safe_content": False})
-        new_post = Post(title = title, content = content)
+        image = request.FILES.get('image')
+        new_post = Post(title=title, content=content)
+        if image:
+            new_post.image = image
         new_post.save()
         return render(request, 'main/home.html',{"posts": posts, "safe_title": True, "safe_content": True})
     return render(request, 'main/home.html',{"posts": posts})
