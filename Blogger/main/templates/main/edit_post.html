@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Edit Post{% endblock %}
+
+{% block content %}
+    <div class="container-lg">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="col-12">
+                    <h1>Edit Your Post</h1>
+                </div>
+                <div class="col-12">
+                    <form class="post-form d-flex flex-column gap-3" action="{% url 'main:edit_post_view' post.id %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Post Title" name="title" class="form-control" value="{{ post.title }}" required>
+                        {% if safe_title == False %}
+                            <div class="alert alert-danger py-2 mb-0">
+                                Post has profanity (title field). Please choose different wording.
+                            </div>
+                        {% endif %}
+
+                        <textarea placeholder="Talk to us" name="content" class="form-control" rows="4" required>{{ post.content }}</textarea>
+                        {% if safe_content == False %}
+                            <div class="alert alert-danger py-2 mb-0">
+                                Post has profanity (content field). Please choose different wording.
+                            </div>
+                        {% endif %}
+                        <input type="file" name="image" class="form-control" accept="image/*">
+
+                        <div class="d-flex justify-content-center gap-3">
+                            <input type="submit" value="Save changes" class="btn btn-primary submit-btn" />
+                            <a href="{% url 'main:post_detail_view' post.id %}" class="btn btn-outline-light">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

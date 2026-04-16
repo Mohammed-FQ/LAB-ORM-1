@@ -7,7 +7,7 @@
     --personality-second-color: rgb(177, 41, 0);
 }
 [data-bs-theme="dark"] {
-    --primary-color: rgb(24, 27, 34);
+    --primary-color: rgb(28, 36, 57);
     --primary-color-text: rgb(255, 248, 217);
     --secondary-color : rgb(12, 15, 22);
     --secondary-color-text: rgb(255, 248, 217);
@@ -30,6 +30,75 @@ body {
 }
 .navbar-brand:hover {
     color: var(--personality-second-color);
+}
+
+.nav-link-custom {
+    text-decoration: none;
+    color: var(--primary-color-text);
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+.nav-link-custom:hover {
+    color: var(--personality-prime-color);
+}
+
+.post-content-preview {
+    display: -webkit-box;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.5rem;
+}
+
+.read-more-link {
+    text-decoration: none;
+    color: var(--personality-prime-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+.read-more-link:hover {
+    color: var(--personality-second-color);
+}
+
+.post-detail-box {
+    margin: 2rem auto;
+    max-width: 800px;
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 0 0.7rem var(--personality-prime-color);
+}
+
+.post-full-content {
+    white-space: pre-wrap;
+    line-height: 1.7;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.delete-btn {
+    border: 1px solid #b3261e;
+    background-color: transparent;
+    color: #ff8a80;
+    border-radius: 1000px;
+    padding: 0.3rem 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #b3261e;
+    color: #fff;
 }
 
 .theme-toggle-button {

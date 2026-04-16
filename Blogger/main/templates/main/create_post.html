@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+    <div class="container-lg">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="col-12">
+                    <h1>Share Your Thoughts</h1>
+                </div>
+                <div class="col-12">
+                    <form class="post-form d-flex flex-column gap-3" action="{% url 'main:create_post_view' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Post Title" name="title" class="form-control" required>
+                        {% if safe_title == False %}
+                            <div class="alert alert-danger py-2 mb-0">
+                                Post has profanity (title field). Please choose different wording.
+                            </div>
+                        {% endif %}
+
+                        <textarea placeholder="Talk to us" name="content" class="form-control" rows="4" required></textarea>
+                        {% if safe_content == False %}
+                            <div class="alert alert-danger py-2 mb-0">
+                                Post has profanity (content field). Please choose different wording.
+                            </div>
+                        {% endif %}
+                        <input type="file" name="image" class="form-control" accept="image/*">
+
+                        <input type="submit" value="Send post" class="btn btn-primary submit-btn" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

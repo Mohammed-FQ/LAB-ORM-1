@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+    <div class="container-lg">
+        <div class="posts">
+            <div class="section-head">
+                <h2>Recent posts</h2>
+            </div>
+            <div class="row g-4 row-cols-1 row-cols-md-2 row-cols-lg-3">
+                {% for post in posts %}
+                <div class="col">
+                    <div class="box h-100">
+                        <img src="{% if post.image %}{{ post.image.url }}{% else %}/media/images/default_image.webp{% endif %}" alt="{{ post.title }}" class="img-fluid rounded mb-2" style="width:100%; object-fit:cover; max-height:200px;" onerror="this.onerror=null;this.src='/media/images/default_image.webp';">
+                        <p class="post-title">{{ post.title }}</p>
+                        <p class="post-content post-content-preview">{{ post.content }}</p>
+                        <a href="{% url 'main:post_detail_view' post.id %}" class="read-more-link">Read more &rarr;</a>
+                        <p class="post-date">{{ post.published_at }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                    <p>No posts available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

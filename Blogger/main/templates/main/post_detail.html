@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    <div class="container-lg">
+        <div class="post-detail-box">
+            <img src="{% if post.image %}{{ post.image.url }}{% else %}/media/images/default_image.webp{% endif %}" alt="{{ post.title }}" class="img-fluid rounded mb-4" style="width:100%; object-fit:cover; max-height:400px;" onerror="this.onerror=null;this.src='/media/images/default_image.webp';">
+            <h2>{{ post.title }}</h2>
+            <p class="post-date">{{ post.published_at }}</p>
+            <p class="post-full-content">{{ post.content }}</p>
+            <div class="post-actions">
+                <a href="{% url 'main:edit_post_view' post.id %}" class="read-more-link">Edit post</a>
+                <form action="{% url 'main:delete_post_view' post.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-btn" onclick="return confirm('Delete this post?')">Delete post</button>
+                </form>
+            </div>
+            <a href="{% url 'main:posts_view' %}" class="read-more-link">&larr; Back to posts</a>
+        </div>
+    </div>
+{% endblock %}
